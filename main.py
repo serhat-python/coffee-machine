@@ -1,4 +1,4 @@
-from idlelib.mainmenu import menudefs
+
 
 MENU = {
     "espresso": {
@@ -65,10 +65,10 @@ while is_on:
     choice = input("What would you like? (espresso/latte/cappuccino):").lower()
     if choice == "off":
         is_on = False
-    if choice == "report":
+    elif choice == "report":
         show_resources()
         print(f"Money: {profit}$")
-    if choice in MENU:
+    elif choice in MENU:
         if check_resources(choice):
             coins = process_coins()
             if coins >= MENU[choice]["cost"]:
