@@ -55,6 +55,12 @@ def process_coins():
 
     return quarters + dimes + nickels + pennies
 
+def calc_resources(drink):
+    for ing in MENU[drink]["ingredients"]:
+         resources[ing] -= MENU[drink]["ingredients"][ing]
+
+
+
 while is_on:
     choice = input("What would you like? (espresso/latte/cappuccino):").lower()
     if choice == "off":
@@ -69,8 +75,10 @@ while is_on:
                 coins -= MENU[choice]["cost"]
                 profit += MENU[choice]["cost"]
                 exchange = round(coins, 2)
+                calc_resources(choice)
                 if exchange > 0:
                     print(f"Your exchange:{exchange} ")
+                print(f"Here is your {choice},Enjoy")
             else:
                 print("Sorry that's not enough money. Money refunded.")
 
